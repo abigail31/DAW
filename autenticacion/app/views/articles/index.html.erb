@@ -1,0 +1,29 @@
+<%= link_to "Agregar Articulo", new_article_path, class: "btn be-blue", title:"Agregar Articulo" %>
+<!--Inspect: metodo sirve para inspeccionar un objeto-->
+<!--%= @article.inspect %-->
+<% if @article.size == 0 %>
+  <h1 class="blue text-center">No hay Articulos</h1>
+<% end %>
+<table class="table table-solid-top">
+  <thead>
+  <tr>
+    <th>Titulo</th>
+    <th>Descripcion</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <%@article.each do |article| %>
+<!--article es la ruta-->
+
+
+        <tr>
+          <td><%= article.title %></td>
+          <td><%= if article.body.length > 79 then (article.body.at(0..80)+"...") else article.body end %></td>
+          <td><%= link_to "Eliminar", article,method: :delete, class: "btn be-red", title:"Eliminar" %>
+            <%= link_to "Editar", edit_article_path(article), class: "btn be-green", title:"Editar" %>
+            <%= link_to "Ver", article,:action=> "show", class: "btn be-orange", title:"Ver" %></td>
+        </tr>
+  <%end%>
+      </tbody>
+    </table>

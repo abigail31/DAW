@@ -1,0 +1,8 @@
+<article class="info-article">
+  <p class="blue">Titulo:</p>
+  <h1><%= @article.title %></h1>
+  <p class="blue">Descripcion:</p>
+  <%= @article.body %>
+</article>
+<%= link_to "Editar", edit_article_path(@article), class: "btn be-blue" %> |
+<%= link_to "Regresar",:articles,class:"btn be-orange" %>

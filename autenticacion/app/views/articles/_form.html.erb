@@ -1,0 +1,21 @@
+<% name ||= "Crear" #Se define un valor por default para la variable 
+   accion ||= "Guardar"	%>
+<h1><%= name %> Articulo</h1>
+<%= form_for(@article) do |f| %>
+	<!--Se imprime el error que sucedio al agregar-->
+	<% @article.errors.full_messages.each do |message| %>
+		<div class="be-red white top-space">
+			* <%= message %>
+		</div>
+	<%end%>
+	<article class="field">
+		<%= f.text_field :title, placeholder: "Titulo", class:"form-control" %>
+	</article>
+	<article class="field">
+		<%= f.text_area :body, placeholder: "Escribe aqui el artículo",style:"height: 250px;", class:"form-control" %>
+	</article>
+	<article class="field">
+		<%= f.submit accion,class:"accion be-blue", title: accion %> |
+    <%= link_to "Regresar",:articles,class:"btn be-orange", title: "Regresar"%>
+	</article>
+<%end%>
